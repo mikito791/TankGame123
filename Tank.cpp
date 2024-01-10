@@ -2,6 +2,7 @@
 #include"Engine/Model.h"
 #include"Engine/Input.h"
 #include"Ground.h"
+#include"TankHead.h"
 
 Tank::Tank(GameObject* parent)
 	:GameObject(parent,"Tank"),hModel_(-1)
@@ -14,6 +15,7 @@ void Tank::Initialize()
 	assert(hModel_ >= 0);
 	speed_ = 0.05;
 	front_ = XMVECTOR({ 0,0,1,0 });
+	Instantiate<TankHead>(this);
 }
 
 void Tank::Update()

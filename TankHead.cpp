@@ -1,6 +1,7 @@
 #include "TankHead.h"
 #include"Engine/Model.h"
 #include"Engine/Input.h"
+#include"Bullet.h"
 
 TankHead::TankHead(GameObject* parent)
 	:GameObject(parent,"TankHead"),hModel_(-1)
@@ -26,6 +27,23 @@ void TankHead::Update()
 	if (Input::IsKey(DIK_D))
 	{
 		this->transform_.rotate_.y += 1;
+	}
+	if (Input::IsKeyDown(DIK_SPACE))
+	{
+		XMFLOAT3 cannonTopPos= Model::GetBonePosition(hModel_, "CannonPos");
+		XMFLOAT3 cannonRootPos = Model::GetBonePosition(hModel_, "CannonRoot");
+		
+		XMVECTOR vtop = XMLoadFloat3(&cannonTopPos);
+		XMVECTOR vroot = XMLoadFloat3(&cannonRootPos);
+		XMVECTOR moveDir=vtop-vroot;
+		moveDir = XMVector3Normalize(moveDir);
+		XMFLOAT3 vmove;
+		XMStoreFloat3(&vmove, moveDir);
+
+		Bullet* pBullet=Instantiate<Bullet>(this->GetParent()->GetParent());
+		pBullet->SetPosition(cannonRootPos);
+		pBullet->SetMoveDir(vmove);
+		pBullet->SetSpeed(0.2);
 	}
 }
 

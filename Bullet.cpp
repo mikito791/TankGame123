@@ -1,6 +1,6 @@
 #include "Bullet.h"
 #include"Engine/Model.h"
-#include"Engine/Input.h"
+
 Bullet::Bullet(GameObject* parent)
 	:GameObject(parent, "Bullet"), hModel_(-1)
 {
@@ -18,10 +18,15 @@ void Bullet::Initialize()
 
 void Bullet::Update()
 {
+	//transform_.positionÇmoveDir_Ç∆bulletSpeedÇ≈çXêV
 	//transform_.position_.z += 0.5;
 	transform_.position_.x = transform_.position_.x + moveDir_.x * bulletSpeed_;
 	transform_.position_.y = transform_.position_.y + moveDir_.y * bulletSpeed_;
 	transform_.position_.z = transform_.position_.z + moveDir_.z * bulletSpeed_;
+	//yç¿ïWÇóéÇ∆Ç∑
+
+	if (transform_.position_.y == -20)
+		KillMe();
 }
 
 void Bullet::Draw()

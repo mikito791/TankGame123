@@ -4,9 +4,9 @@ class Bullet :
     public GameObject
 {
 private:
-	int hModel_;
-	float bulletSpeed_;
-	XMFLOAT3 moveDir_;
+	int hModel_; //弾丸のモデル番号を収めておくやつ
+	float bulletSpeed_; //弾丸の速さ
+	XMFLOAT3 moveDir_; //向きのベクトル
 public:
 	Bullet(GameObject* parent);
 	~Bullet();

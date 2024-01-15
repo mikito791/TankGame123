@@ -30,8 +30,8 @@ void TankHead::Update()
 	}
 	if (Input::IsKeyDown(DIK_SPACE))
 	{
-		XMFLOAT3 cannonTopPos = Model::GetBonePosition(hModel_, "CannonPos");
-		XMFLOAT3 cannonRootPos = Model::GetBonePosition(hModel_, "CannonRoot");
+		XMFLOAT3 cannonTopPos = Model::GetBonePosition(hModel_, "cannonTopPos");
+		XMFLOAT3 cannonRootPos = Model::GetBonePosition(hModel_, "cannonRootPos");
 		XMVECTOR vtop = XMLoadFloat3(&cannonTopPos);
 		XMVECTOR vroot = XMLoadFloat3(&cannonRootPos);
 

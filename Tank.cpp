@@ -1,11 +1,22 @@
 #include "Tank.h"
 #include"Engine/Model.h"
 #include"Engine/Input.h"
+#include"Engine/Camera.h"
 #include"Ground.h"
 #include"TankHead.h"
 
+//カメラ制御
+enum CAM_TYPE
+{
+	FIXED_TYPE,//固定
+	TPS_NOROT_TYPE,
+	TPS_TYPE,//3人称
+	FPS_TYPE,
+	MAX_TYPE,//番兵さん（チェック用の値）
+};
 Tank::Tank(GameObject* parent)
-	:GameObject(parent,"Tank"),hModel_(-1)
+	:GameObject(parent, "Tank"), hModel_(-1),
+	speed_(0.05),front_({0,0,1,0}),camState_(CAM_TYPE::FIXED_TYPE)
 {
 }
 
@@ -51,7 +62,43 @@ void Tank::Update()
 	Model::RayCast(hGmodel, &data);
 	if (data.hit == true)
 	{
-		transform_.position_.y = -data.dist;
+		transform_.position_.y = -data.dist+0.5f;
+	}
+
+	if (Input::IsKeyDown(DIK_Z))
+	{
+		camState_++;
+		if (camState_ == CAM_TYPE::MAX_TYPE)
+			camState_ = CAM_TYPE::FIXED_TYPE;
+	}
+
+	switch (camState_)
+	{
+	case CAM_TYPE::FIXED_TYPE:
+	{
+		Camera::SetPosition(XMFLOAT3(0, 20, -20));
+		Camera::SetTarget(XMFLOAT3(0, 0, 0));
+		break;
+	}
+	case CAM_TYPE::TPS_NOROT_TYPE:
+	{
+		XMFLOAT3 camPos = transform_.position_;
+		camPos.y = transform_.position_.y + 5.0f;
+		camPos.z = transform_.position_.z - 10.0f;
+		Camera::SetPosition(camPos);
+		Camera::SetTarget(transform_.position_);
+		break;
+	}
+	case CAM_TYPE::TPS_TYPE:
+	{
+		break;
+	}
+	case CAM_TYPE::FPS_TYPE:
+	{
+		break;
+	}
+	default:
+		break;
 	}
 }
 

@@ -4,7 +4,10 @@
 #include"Enemy.h"
 #include"Engine/Camera.h"
 //#include"TankHead.h"
-
+namespace
+{
+	const int ENEMY_NUM{ 30 };
+}
 PlayScene::PlayScene(GameObject* parent)
 	:GameObject(parent, "SceneManager")
 {
@@ -14,7 +17,8 @@ void PlayScene::Initialize()
 {
 	Instantiate<Ground>(this);
 	Instantiate<Tank>(this);
-	Instantiate<Enemy>(this);
+	for (int i = 0; i < ENEMY_NUM; i++)
+		Instantiate<Enemy>(this);
 	//Instantiate<TankHead>(this);
 }
 

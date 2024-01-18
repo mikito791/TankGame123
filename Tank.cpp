@@ -16,7 +16,7 @@ enum CAM_TYPE
 };
 Tank::Tank(GameObject* parent)
 	:GameObject(parent, "Tank"), hModel_(-1),
-	speed_(0.05),front_({0,0,1,0}),camState_(CAM_TYPE::FIXED_TYPE)
+	speed_(0.05),front_({0,0,1,0})//camState_(CAM_TYPE::FIXED_TYPE)
 {
 }
 
@@ -67,12 +67,12 @@ void Tank::Update()
 
 	if (Input::IsKeyDown(DIK_Z))
 	{
-		camState_++;
+		/*camState_++;
 		if (camState_ == CAM_TYPE::MAX_TYPE)
-			camState_ = CAM_TYPE::FIXED_TYPE;
+			camState_ = CAM_TYPE::FIXED_TYPE;*/
 	}
 
-	switch (camState_)
+	/*switch (camState_)
 	{
 	case CAM_TYPE::FIXED_TYPE:
 	{
@@ -99,7 +99,7 @@ void Tank::Update()
 	}
 	default:
 		break;
-	}
+	}*/
 }
 
 void Tank::Draw()

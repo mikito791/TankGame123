@@ -22,16 +22,16 @@ void TankHead::Update()
 {
 	if (Input::IsKey(DIK_A))
 	{
-		this->transform_.rotate_.y -= 1;
+		this->transform_.rotate_.y -= 3;
 	}
 	if (Input::IsKey(DIK_D))
 	{
-		this->transform_.rotate_.y += 1;
+		this->transform_.rotate_.y += 3;
 	}
 	if (Input::IsKeyDown(DIK_SPACE))
 	{
-		XMFLOAT3 cannonTopPos = Model::GetBonePosition(hModel_, "cannonTopPos");
-		XMFLOAT3 cannonRootPos = Model::GetBonePosition(hModel_, "cannonRootPos");
+		XMFLOAT3 cannonTopPos = Model::GetBonePosition(hModel_, "CannonPos");
+		XMFLOAT3 cannonRootPos = Model::GetBonePosition(hModel_, "CannonRoot");
 		XMVECTOR vtop = XMLoadFloat3(&cannonTopPos);
 		XMVECTOR vroot = XMLoadFloat3(&cannonRootPos);
 

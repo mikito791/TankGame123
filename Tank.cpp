@@ -5,6 +5,7 @@
 #include"Ground.h"
 #include"TankHead.h"
 
+//カメラ制御
 enum CAM_TYPE
 {
 	FIXED_TYPE,//固定
@@ -13,9 +14,9 @@ enum CAM_TYPE
 	FPS_TYPE,
 	MAX_TYPE,//番兵さん（チェック用の値）
 };
-
 Tank::Tank(GameObject* parent)
-	:GameObject(parent,"Tank"),hModel_(-1)
+	:GameObject(parent, "Tank"), hModel_(-1),
+	speed_(0.05),front_({0,0,1,0})//camState_(CAM_TYPE::FIXED_TYPE)
 {
 }
 

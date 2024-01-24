@@ -1,13 +1,15 @@
 #pragma once
 #include "Engine/GameObject.h"
 //class Tank;
-//class Text;
+class Text;
 class PlayScene :
     public GameObject
+
 {
-	/*Tank* player;
-	Text* ptext;*/
+	//Tank* player;
+	Text* ptext;
 public:
+	int enenmyNum;
     PlayScene(GameObject* parent);
 	int hPict_;
 	//初期化
@@ -22,6 +24,8 @@ public:
 	//開放
 	void Release() override;
 	//インライン定義
-	void DescEnemy(){}
+	void DescEnemy() { enenmyNum--; }//ここおかしい
+	bool IsEnemyLeft() { return enenmyNum > 0; }
+	int GetEnemyNum() { return enenmyNum; }
 };
 

@@ -17,7 +17,7 @@ void Bullet::Initialize()
 {
 	hModel_ = Model::Load("Model\\Bullet.fbx");
 	assert(hModel_ >= 0);
-	SphereCollider* collider = new SphereCollider(XMFLOAT3(0, 0, 0),0.3);
+	SphereCollider* collider = new SphereCollider(XMFLOAT3(0, 0, 0),0.5);
 	AddCollider(collider);
 	playscene_ = (PlayScene*)GetParent();
 }
@@ -53,7 +53,7 @@ void Bullet::OnCollision(GameObject* pTarget)
 		this->KillMe();
 		playscene_->DescEnemy();
 		pTarget->KillMe();//‚±‚±‚¨‚©‚µ‚¢
-		Debug::Log(playscene_->GetObjectName());
+		//Debug::Log(playscene_->GetObjectName());
 	}
 
 }

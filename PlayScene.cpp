@@ -2,6 +2,7 @@
 #include"Ground.h"
 #include"Tank.h"
 #include"Enemy.h"
+#include"HDU.h"
 #include"Engine/Camera.h"
 #include"Engine/Text.h"
 //#include"TankHead.h"
@@ -25,6 +26,7 @@ void PlayScene::Initialize()
 	//Instantiate<TankHead>(this);
 	ptext = new Text;
 	ptext->Initialize();
+	Instantiate<HDU>(this);
 }
 
 void PlayScene::Update()

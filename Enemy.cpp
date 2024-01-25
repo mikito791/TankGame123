@@ -39,7 +39,7 @@ void Enemy::Initialize()
 	{
 		transform_.position_.y = -data.dist;
 	}
-	SphereCollider* SphCol = new SphereCollider(XMFLOAT3(0, 0, 0), 0.3);
+	SphereCollider* SphCol = new SphereCollider(XMFLOAT3(0, 0, 0), 0.8);
 	AddCollider(SphCol);
 
 

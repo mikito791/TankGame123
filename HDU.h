@@ -7,13 +7,14 @@ using std::vector;
 class HDU :
     public GameObject
 {
+	string ConstructEnemyNumberString();
 public:
 	HDU(GameObject* parent);
 	~HDU();
 	int hHDU_;
 	int hNumber_;
 	Transform tHud_;
-
+	vector<Transform> tNumber;
 	//‰Šú‰»
 	void Initialize() override;
 

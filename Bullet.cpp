@@ -19,6 +19,7 @@ void Bullet::Initialize()
 	assert(hModel_ >= 0);
 	SphereCollider* collider = new SphereCollider(XMFLOAT3(0, 0, 0),0.3);
 	AddCollider(collider);
+	playscene_ = (PlayScene*)GetParent();
 }
 
 void Bullet::Update()
@@ -49,9 +50,10 @@ void Bullet::OnCollision(GameObject* pTarget)
 
 	if (pTarget->GetObjectName() == "Enemy")
 	{
+		this->KillMe();
 		playscene_->DescEnemy();
 		pTarget->KillMe();//‚±‚±‚¨‚©‚µ‚¢
 		Debug::Log(playscene_->GetObjectName());
 	}
-	this->KillMe();
+
 }

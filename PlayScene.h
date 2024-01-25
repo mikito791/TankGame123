@@ -9,7 +9,7 @@ class PlayScene :
 	//Tank* player;
 	Text* ptext;
 public:
-	int enenmyNum;
+	int enemyNum;
     PlayScene(GameObject* parent);
 	int hPict_;
 	//初期化
@@ -24,8 +24,8 @@ public:
 	//開放
 	void Release() override;
 	//インライン定義
-	void DescEnemy() { enenmyNum--; }//ここおかしい
-	bool IsEnemyLeft() { return enenmyNum > 0; }
-	int GetEnemyNum() { return enenmyNum; }
+	void DescEnemy() { enemyNum--; }
+	bool IsEnemyLeft() { return enemyNum > 0; }
+	int GetEnemyNum() { return enemyNum; }
 };
 

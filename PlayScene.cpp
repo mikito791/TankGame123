@@ -19,8 +19,8 @@ void PlayScene::Initialize()
 	Instantiate<Ground>(this);
 	Instantiate<Tank>(this);
 
-	enenmyNum = ENEMY_NUM;
-	for (int i = 0; i < enenmyNum; i++)
+	enemyNum = ENEMY_NUM;
+	for (int i = 0; i < enemyNum; i++)
 		Instantiate<Enemy>(this);
 	//Instantiate<TankHead>(this);
 	ptext = new Text;

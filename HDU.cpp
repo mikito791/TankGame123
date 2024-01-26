@@ -28,14 +28,22 @@ void HDU::Initialize()
 
 void HDU::Update()
 {
-	tHud_.scale_ = { 0.5, 0.5, 1.0 };
-	tHud_.position_ = { -0.6, 0.85, 0 };//‚±‚±‚Å‰æ‘œ‚ÌˆÊ’u’²®
+	tHud_.scale_ = { 0.6, 0.6, 1.5 };
+	tHud_.position_ = { -0.8, 0.90, 0 };//‚±‚±‚Å‰æ‘œ‚ÌˆÊ’u’²®
 }
 
 void HDU::Draw()
 {
 	Image::SetTransform(hHDU_, tHud_);
 	Image::Draw(hHDU_);
+
+	Transform TraNum;
+	TraNum.scale_ = { 0.65,0.75,1.0 };
+	TraNum.position_ = { -0.7,0.90,0 };
+	Image::SetRect(hNumber_, 51.2 * 3, 0, 51.2, 99);
+	Image::SetTransform(hNumber_, TraNum);
+	Image::Draw(hNumber_);
+
 }
 
 void HDU::Release()

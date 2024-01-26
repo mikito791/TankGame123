@@ -3,6 +3,7 @@
 #include"Tank.h"
 #include"Enemy.h"
 #include"HDU.h"
+#include"Engine/SceneManager.h"
 #include"Engine/Camera.h"
 #include"Engine/Text.h"
 //#include"TankHead.h"
@@ -36,6 +37,11 @@ void PlayScene::Update()
 	camPos.y += 8;
 	camPos.z -= 15;
 	Camera::SetPosition(camPos);*/
+	if (FindObject("Enemy") == nullptr)
+	{
+		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+		pSceneManager->ChangeScene(SCENE_ID_CLEAR);
+	}
 }
 
 void PlayScene::Draw()
